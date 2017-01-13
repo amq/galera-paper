@@ -15,5 +15,8 @@ deploy:
     secure: tooikuuokQXXGdmoo2wwuwaB/i4Ko1TaZURG1SDh+Pbzwi4PfMqZeLXQYVxAUy25wYqhn1YdTf6dLKpd9GgglgDScJlO1M1voo/oHWQb+XExpmCW/ZI95ZM1HDPOeOAfaYubKkylqmAnTa3JOij1HKVy7D8h6VYBV+KxQ4UEq5EOFoH+5pr/VOprAv3gDbqKHv1UnAl70EUsHMWtsMF9WfJPIZQe3GNnN+npO87W/veSN/I3xpP3agMeRHFscWfrwbFBKSloUzvhwfGaz2vY1etOg/zuXMHaIVLllrKCRhcw6IVOKxl5Hlu/m9zEIAuQKWxRNayoQ38PzZHYikkq76b6Jo2Zf197DaLOehSNOc0npn5Cr0+PsNc6/Sh43LVzZf+buaS50c2f/+GySng5FZXbNPgconjXVoxZVv2/wl2vtvVpa0hgOerd5kPov/sEytMKgIRXaLf+V0IP6XCpDkxrHQBFdSV2MeHtpdUhhQmcj9FMUsTi1m2McsAaxFqnTFwKbgtPszJ3Ifo+uJD8IfjSO8GqayDwjZPpQliCKW9YF64A8D2lnMX8Q3Yvgqz1O27WwMJmaE7jhJ7TRbm+xFi5H4fQsbzQlr1lHCdk5kGfJrrdo3gvj1bKsiOTjzJN13LmLo+VHsfgYw4+gyUPejKjgQoFxbKSE4832TNtAIo=
   file: galera-paper.pdf
   skip_cleanup: true
-  on:
-    tags: false
+
+branches:
+  except:
+    - /^untagged-/
+    - /^v\d/
