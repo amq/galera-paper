@@ -7,7 +7,7 @@ script:
   - docker run -v $(pwd):/data -w /data -it --rm hiono/texlive pdflatex galera-paper.tex
   - docker run -v $(pwd):/data -w /data -it --rm hiono/texlive biber galera-paper
   - docker run -v $(pwd):/data -w /data -it --rm hiono/texlive pdflatex galera-paper.tex
-  - chown -R travis:travis .
+  - sudo chown -R travis:travis .
 
 deploy:
   provider: releases
