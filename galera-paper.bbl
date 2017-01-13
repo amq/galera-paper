@@ -1,0 +1,263 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.8 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{none/global/}
+    \entry{gautam2016multi}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=81c448c449f80858431b4b9082cba44b}{%
+           family={Gautam},
+           familyi={G\bibinitperiod},
+           given={Bishnu\bibnamedelima Prasad},
+           giveni={B\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=f815d4b459d819fe84973dd713b5570f}{%
+           family={Wasaki},
+           familyi={W\bibinitperiod},
+           given={Katsumi},
+           giveni={K\bibinitperiod}}}%
+        {{hash=d9a17bccf572daf9163c14d5c402aac3}{%
+           family={Batajoo},
+           familyi={B\bibinitperiod},
+           given={Amit},
+           giveni={A\bibinitperiod}}}%
+        {{hash=9e5278ae10b45080a2da3aa578f08a30}{%
+           family={Shrestha},
+           familyi={S\bibinitperiod},
+           given={Suresh},
+           giveni={S\bibinitperiod}}}%
+        {{hash=398e69e93c9776ae7ce9fe727986b02a}{%
+           family={Kazuhiko},
+           familyi={K\bibinitperiod},
+           given={Sato},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{f8fd3381602843aa50130bdf0b35e2c1}
+      \strng{fullhash}{7582bc5c9def05974d342699512fc528}
+      \strng{authornamehash}{f8fd3381602843aa50130bdf0b35e2c1}
+      \strng{authorfullhash}{7582bc5c9def05974d342699512fc528}
+      \field{sortinit}{1}
+      \field{sortinithash}{27a2bc5dfb9ed0a0422134d636544b5d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2016 IEEE 30th International Conference on Advanced Information Networking and Applications (AINA)}
+      \field{title}{Multi-master Replication of Enhanced Learning Assistant System in IoT Cluster}
+      \field{year}{2016}
+      \field{pages}{1006\bibrangedash 1012}
+      \range{pages}{7}
+    \endentry
+    \entry{bernstein1985serializability}{article}{}
+      \name{author}{2}{}{%
+        {{hash=2bd461ff6831674efc46e2939b0bf8cf}{%
+           family={Bernstein},
+           familyi={B\bibinitperiod},
+           given={Philip\bibnamedelima A},
+           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=89c73c6f0e4d71ccf6f16f7607bac96d}{%
+           family={Goodman},
+           familyi={G\bibinitperiod},
+           given={Nathan},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{f936006cdcc3abd31ea5d59b0492874f}
+      \strng{fullhash}{f936006cdcc3abd31ea5d59b0492874f}
+      \strng{authornamehash}{f936006cdcc3abd31ea5d59b0492874f}
+      \strng{authorfullhash}{f936006cdcc3abd31ea5d59b0492874f}
+      \field{sortinit}{2}
+      \field{sortinithash}{0aa614ace9f3a40ef5a67e7f7a184048}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Computer and System Sciences}
+      \field{number}{3}
+      \field{title}{Serializability theory for replicated databases}
+      \field{volume}{31}
+      \field{year}{1985}
+      \field{pages}{355\bibrangedash 374}
+      \range{pages}{20}
+    \endentry
+    \entry{pacitti2003preventive}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=03a6d4db5a28ead0af982709c6bdb864}{%
+           family={Pacitti},
+           familyi={P\bibinitperiod},
+           given={Esther},
+           giveni={E\bibinitperiod}}}%
+        {{hash=a47466df4d35db988094d82878fce35c}{%
+           family={Özsu},
+           familyi={Ö\bibinitperiod},
+           given={M\bibnamedelima Tamer},
+           giveni={M\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=941c44256cb68ceb18b54a12a0e56d91}{%
+           family={Coulon},
+           familyi={C\bibinitperiod},
+           given={Cédric},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{cbe6cb1cc6a18953e1a0f9d2853649b0}
+      \strng{fullhash}{cbe6cb1cc6a18953e1a0f9d2853649b0}
+      \strng{authornamehash}{cbe6cb1cc6a18953e1a0f9d2853649b0}
+      \strng{authorfullhash}{cbe6cb1cc6a18953e1a0f9d2853649b0}
+      \field{sortinit}{3}
+      \field{sortinithash}{197da6d6c34c6b20ce45c4d4baace5a4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{European Conference on Parallel Processing}
+      \field{title}{Preventive multi-master replication in a cluster of autonomous databases}
+      \field{year}{2003}
+      \field{pages}{318\bibrangedash 327}
+      \range{pages}{10}
+    \endentry
+    \entry{xyxon}{online}{}
+      \name{author}{1}{}{%
+        {{hash=f054d01a14d0372a70c538897f6f2eb3}{%
+           family={Inc},
+           familyi={I\bibinitperiod},
+           given={XyXon},
+           giveni={X\bibinitperiod}}}%
+      }
+      \strng{namehash}{f054d01a14d0372a70c538897f6f2eb3}
+      \strng{fullhash}{f054d01a14d0372a70c538897f6f2eb3}
+      \strng{authornamehash}{f054d01a14d0372a70c538897f6f2eb3}
+      \strng{authorfullhash}{f054d01a14d0372a70c538897f6f2eb3}
+      \field{sortinit}{4}
+      \field{sortinithash}{d221becdd544034cf9082056cd6e6d2d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{MariaDB Enterprise Cluster | New Standard Database}
+      \verb{url}
+      \verb https://web.archive.org/web/20161217015254/http://www.xyxon.co.jp/lineup/mariadb/cluster/index.html/?version=en
+      \endverb
+    \endentry
+    \entry{wsrepapi}{online}{}
+      \name{author}{1}{}{%
+        {{hash=38b09028b8030bdbd0e4ac6529ffc6da}{%
+           family={Ltd},
+           familyi={L\bibinitperiod},
+           given={Codership},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{38b09028b8030bdbd0e4ac6529ffc6da}
+      \strng{fullhash}{38b09028b8030bdbd0e4ac6529ffc6da}
+      \strng{authornamehash}{38b09028b8030bdbd0e4ac6529ffc6da}
+      \strng{authorfullhash}{38b09028b8030bdbd0e4ac6529ffc6da}
+      \field{sortinit}{5}
+      \field{sortinithash}{c9df3c9fb8f555dd9201cedc5e343021}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Replication API - Galera Cluster Documentation}
+      \verb{url}
+      \verb https://web.archive.org/web/20161129193023/http://galeracluster.com/documentation-webpages/architecture.html
+      \endverb
+    \endentry
+    \entry{galerarecovery}{online}{}
+      \name{author}{1}{}{%
+        {{hash=38b09028b8030bdbd0e4ac6529ffc6da}{%
+           family={Ltd},
+           familyi={L\bibinitperiod},
+           given={Codership},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{38b09028b8030bdbd0e4ac6529ffc6da}
+      \strng{fullhash}{38b09028b8030bdbd0e4ac6529ffc6da}
+      \strng{authornamehash}{38b09028b8030bdbd0e4ac6529ffc6da}
+      \strng{authorfullhash}{38b09028b8030bdbd0e4ac6529ffc6da}
+      \field{sortinit}{7}
+      \field{sortinithash}{6ac7fe70cdec8cba8f65694411ce2532}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Node Failure and Recovery}
+      \verb{url}
+      \verb https://web.archive.org/web/20161218235521/http://galeracluster.com/documentation-webpages/recovery.html
+      \endverb
+    \endentry
+    \entry{galeraquorum}{online}{}
+      \name{author}{1}{}{%
+        {{hash=38b09028b8030bdbd0e4ac6529ffc6da}{%
+           family={Ltd},
+           familyi={L\bibinitperiod},
+           given={Codership},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{38b09028b8030bdbd0e4ac6529ffc6da}
+      \strng{fullhash}{38b09028b8030bdbd0e4ac6529ffc6da}
+      \strng{authornamehash}{38b09028b8030bdbd0e4ac6529ffc6da}
+      \strng{authorfullhash}{38b09028b8030bdbd0e4ac6529ffc6da}
+      \field{sortinit}{8}
+      \field{sortinithash}{2f1b0e69e7617f99664f1cd00bb9603c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Weighted Quorum}
+      \verb{url}
+      \verb https://web.archive.org/web/20161218235906/http://galeracluster.com/documentation-webpages/weightedquorum.html
+      \endverb
+    \endentry
+    \entry{awsinstances}{online}{}
+      \name{author}{1}{}{%
+        {{hash=31f2293882215483528a184798cb2166}{%
+           family={Inc},
+           familyi={I\bibinitperiod},
+           given={Amazon\bibnamedelimb Web\bibnamedelima Services},
+           giveni={A\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{31f2293882215483528a184798cb2166}
+      \strng{fullhash}{31f2293882215483528a184798cb2166}
+      \strng{authornamehash}{31f2293882215483528a184798cb2166}
+      \strng{authorfullhash}{31f2293882215483528a184798cb2166}
+      \field{sortinit}{9}
+      \field{sortinithash}{2999ebab86052e6d71b434385f8b4ed2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Amazon EC2 Instance Types}
+      \verb{url}
+      \verb http://web.archive.org/web/20161220111831/https://aws.amazon.com/ec2/instance-types/
+      \endverb
+    \endentry
+    \entry{mariadbsysbench}{online}{}
+      \name{author}{1}{}{%
+        {{hash=4a7dc414ab993a0668ed32c62a8d41f9}{%
+           family={Foundation},
+           familyi={F\bibinitperiod},
+           given={MariaDB},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{4a7dc414ab993a0668ed32c62a8d41f9}
+      \strng{fullhash}{4a7dc414ab993a0668ed32c62a8d41f9}
+      \strng{authornamehash}{4a7dc414ab993a0668ed32c62a8d41f9}
+      \strng{authorfullhash}{4a7dc414ab993a0668ed32c62a8d41f9}
+      \field{sortinit}{1}
+      \field{sortinithash}{27a2bc5dfb9ed0a0422134d636544b5d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{sysbench Benchmark Setup}
+      \verb{url}
+      \verb http://web.archive.org/web/20161220121933/https://mariadb.com/kb/en/mariadb/sysbench-benchmark-setup/
+      \endverb
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+
