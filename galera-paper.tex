@@ -48,9 +48,7 @@ Database Multi-master replication is used in a Learning Assistance System \cite{
 Active replication means to process the same request at every replica, whereas with passive replication each single request is processed on a single replica and then its state is transferred to the other replicas.
 Multi-master replication is a method of DB replication, which allows data to be stored by a group of computers, and updated by any member of the group.
 
-In order to address those problems consistency-aware protocols are used. Active eager replication based on the optimistic approach (local replicas to interrupt for correction) is used in the LAS with Galera cluster for content related to Moodle to address and to ensure local consistency for each cluster. Passive lazy replication is accomplished by a user writing queries for the cluster. It works with a dedicated algorithm. 
-
-Other approaches use pessimistic algorithms. For example, Bernstein and Goodman \cite{bernstein1985serializability} suggest blocking of writes can be used until an update is confirmed. The consequence are performance problems with high degree of scalability. In addition manual administrative updates and lengthy blockings conflict each other.
+In order to address those problems consistency-aware protocols are used. Active eager replication based on the optimistic approach (local replicas to interrupt for correction) is used with Galera cluster for content related to Moodle to address and to ensure local consistency for each cluster. Passive lazy replication is accomplished by a user writing queries for the cluster. It works with a dedicated algorithm. 
 
 Pacitti et al. \cite{pacitti2003preventive} demonstrate preventive multi-master lazy replication assuring strong consistency without the constraints (expensive in terms of message overhead and response time) of eager replication. A multi-master refresher algorithm prevents conflicts by exploiting the cluster’s high speed network. Their solution achieves full node autonomy with independent black box cluster nodes.
 
@@ -64,8 +62,8 @@ Firstly we take a deeper look at Galera Cluster and the implications of this tec
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=6cm]{galera1.png}
-	\caption{MariaDB Galera basic architecture \cite{xyxon}}
+	\includegraphics[width=6cm]{galera1-2.png}
+	\caption{MariaDB Galera basic architecture}
 	\label{fig:galera_structure}
 \end{figure}
 
@@ -73,9 +71,9 @@ Fig \ref{fig:galera_structure} shows the basic architecture of a MariaDB Galera 
 
 \subsection{Architecture of Galera Cluster}
 
-Wsrep API (Write-Set Replication API) is a generic replication API for DBMS-like applications, with which Galera Cluster delivers certification-based replication. It consists of ``wsrep hooks", which is the ``integration with the database server engine and \texttt{dlopen()}, which makes the wsrep provider available to the wsrep hooks \cite{wsrepapi}. Wsrep considers the database server to have a state, which refers to the contents of its database. When the database is in use and its content is changed, the state of the database is also changed and the wsrep API represents the changes as a series of atomic transactions. In a database cluster all nodes have the same state, as they continually synchronize by applying the same atomic transactions in the same order.
+Wsrep API (Write-Set Replication API) is a generic replication API for DBMS-like applications, with which Galera Cluster delivers certification-based replication. It consists of “wsrep hooks", which is the “integration with the database server engine and \texttt{dlopen()}, which makes the wsrep provider available to the wsrep hooks” \cite{wsrepapi}. Wsrep considers the database server to have a state, which refers to the contents of its database. When the database is in use and its content is changed, the state of the database is also changed and the wsrep API represents the changes as a series of atomic transactions. In a database cluster all nodes have the same state, as they continually synchronize by applying the same atomic transactions in the same order.
 
-So when a change in the state of a server occurs, the wsrep-hooks translate the changes to the write-set, \texttt{dlopen()} makes the wsrep provider functions available and the Galera Replication Plugin enables write-set replication service functionality. The Galera Replication Plugin consists of certification layer, replication layer and group communication framework, which provides a plugin architecture for various group communication plugins, that enable communication between the nodes (like gcomm and Spread).
+So when a change in the state of a server occurs, the wsrep-hooks translate the changes to the write-set, \texttt{dlopen()} make the wsrep provider functions available and the Galera Replication Plugin enables write-set replication service functionality.
 
 To identify state changes the wsrep API uses a GTID (Global Transaction ID), which consists of State UUID (unique identifier for the state and the order of atomic transactions that were applied to it) and Ordinal Sequence Number, which is used to identify the position of the change in sequence \cite{wsrepapi}.
 
@@ -92,11 +90,11 @@ Amazon Cloud (AWS) has been used to create a cluster of 5 nodes, each being a pr
 
 On the software side, CentOS 7.3 with the 3.10.0-514 Linux kernel has been chosen as the operating system. Volumes were mounted with the XFS journaling file system. The tested database versions were MariaDB 10.1.20 and Galera 25.3.19.
 
-All relevant configuration files and testing commands can be found in appendix, with the goal to make the results fully reproducible.
+All the relevant configuration and testing commands can be found in appendix, with the goal to make the results fully reproducible.
 
 \section{Simulation}
 
-The performance evaluation has been done using Sysbench 0.5, specifically the OLTP Read/Write (RW) benchmark wich consists of 70\% read (\texttt{SELECT}) and 30\% write (\texttt{INSERT, UPDATE, DELETE}) operations, simulating a real-world usage. The dataset contained 1,000,000 rows in a single table totalling 300 MB. Sysbench is simple and well known set of benchmarks, used by the MariaDB team itself to uncover performance problems as a part of the development process \cite{mariadbsysbench}.
+The performance evaluation has been done using Sysbench 0.5, specifically the OLTP Read/Write (RW) benchmark wich consists of 70\% read (\texttt{SELECT}) and 30\% write (\texttt{INSERT, UPDATE, DELETE}) operations, simulating a real-world usage. The dataset contained 1,000,000 rows in a single table totalling 300 MB. Sysbench is a well known set of benchmarks, used by the MariaDB team itself to uncover performance problems as a part of the development process \cite{mariadbsysbench}.
 
 \begin{figure}[ht]
 	\centering
@@ -128,7 +126,7 @@ In the initial phases of testing it has been discovered that Galera suffers from
 
 \subsection{Throughput}
 
-When measuring the peak sustainable throughput (transactions per second), we have firstly performed a test with a constant number of clients (128) and a variable number of cluster nodes. The standalone MariaDB was included for a comparison. A 3-node cluster showed the best performance among Galera setups, reaching over 20,000 transactions per second, while it has been 8\% slower than standalone. We assume that the difference was mainly caused by the write operations overhead.
+When measuring the peak sustainable throughput (transactions per second), we have firstly performed a test with a constant number of clients (128) and a variable number of cluster nodes. The standalone MariaDB was included for a comparison. Fig \ref{fig:varying_nodes} demonstrates that a 3-node cluster achieved the best performance among Galera setups, reaching over 20,000 transactions per second, while it has been 8\% slower than standalone. We assume that the difference was mainly caused by the write operations overhead.
 
 \begin{figure}[ht]
 	\centering
@@ -150,6 +148,7 @@ When measuring the peak sustainable throughput (transactions per second), we hav
 		\end{axis}
 	\end{tikzpicture}
 	\caption{Sysbench RW, varying number of nodes, querying single node}
+	\label{fig:varying_nodes}
 \end{figure}
 
 \begin{figure}[ht]
@@ -165,7 +164,7 @@ When measuring the peak sustainable throughput (transactions per second), we hav
 				legend style={at={(0.72,0.25)},anchor=north},
 			xlabel=Clients (threads), ylabel=Throughput (transactions per second), ymin=0]
 			\addplot[dashed,red,very thick] table [x={threads}, y={tps}]{\pistonkinetics};
-			\label{plot_a_one}
+                \label{plot_a_one}
 			\addlegendentry{Throughput}
 		\end{axis}
 		\begin{axis}[
@@ -177,19 +176,20 @@ When measuring the peak sustainable throughput (transactions per second), we hav
 				fixed},
 				legend style={at={(0.72,0.25)},anchor=north},
 			xlabel=Clients (threads), ylabel=95\% transaction latency (ms), ymin=0]
+                \addlegendimage{/pgfplots/refstyle=plot_a_one}\addlegendentry{Throughput}
 			\addplot[dotted,blue,very thick] table [x={threads}, y={latency95}]{\pistonkinetics};
-			\label{plot_a_two}
 			\addlegendentry{Latency}
 		\end{axis}
 	\end{tikzpicture}
 	\caption{Sysbench RW, 3 nodes, varying number of threads, querying single node}
+	\label{fig:varying_threads_qsingle}
 \end{figure}
 
-Secondly, we observed the behavior of a 3-node cluster under a varying load of concurrent clients (1-256). The cluster showed consistent results and remained fully stable throughout the test which lasted for 10 minutes. It is worth noting that such a high load is rare among real-world setups, meaning that Galera provides enough of stability headroom. The performance bottleneck was the CPU.
+Secondly, we have observed the behavior of a 3-node cluster under a varying load of concurrent clients (1-256). The cluster showed consistent results (Fig \ref{fig:varying_threads_qsingle}) and remained fully stable throughout the test which lasted for 10 minutes. It is worth noting that such a high load is rare among real-world setups, meaning that Galera provides enough of stability headroom. The performance bottleneck was the CPU.
 
 \subsection{Latency}
 
-Considering that throughput stops scaling past 32 concurrent clients in our setup, we concluded that the latency must rise at least proportionally afterwards. But how consistent is it? Sysbench provides a 95th percentile to answer this question: Galera is free of unexpected latency deviations under an increasing load.
+Considering that throughput stops scaling past 32 concurrent clients in our setup, we concluded that the latency must rise at least proportionally afterwards. But how consistent is it? Sysbench provides a 95th percentile to answer this question: Galera is free of unexpected latency deviations under an increasing load, as seen in Fig \ref{fig:varying_threads_qsingle}.
 
 \subsection{Failure handling}
 
@@ -205,7 +205,7 @@ As a result, we didn't uncover any failure-related problems in Galera. We apprec
 
 \subsection{Querying all nodes}
 
-Until now we were only querying a single node at a time during the testing. Could querying the whole cluster bring better performance, considering that the majority of transactions are (scalable) reads? To avoid any performance overhead from a load balancer, we have used the ability of Sysbench to send requests in a round-robin fashion. The results were mixed: we did indeed observe an improvement of an average 15\% with 8-64 clients, but there was a steep performance decline of 8\% with 128-256 clients. The 95th latency percentile remained equal until 64 clients, but with 128 clients it was already two times higher. There was additionally an increasing amount of rolled-back transactions as a result of conflicting writes. For production use, it would be wise to use a load balancer to parallelise the read operations and only pass writes to a single node at a time.
+Until now we were only querying a single node at a time during the testing. Could querying the whole cluster bring better performance, considering that the majority of transactions are (scalable) reads? To avoid any performance overhead from a load balancer, we have used the ability of Sysbench to send requests in a round-robin fashion. The results were mixed (Fig \ref{fig:varying_threads_qmultiple}): we did indeed observe an improvement of an average 15\% with 8-64 clients, but there was a steep performance decline of 8\% with 128-256 clients. The 95th latency percentile remained equal until 64 clients, but with 128 clients it was already two times higher. There was additionally an increasing amount of rolled-back transactions as a result of conflicting writes. For production use, it would be wise to use a load balancer to parallelise the read operations and only pass writes to a single node at a time.
 
 \begin{figure}[ht]
 	\centering
@@ -232,12 +232,13 @@ Until now we were only querying a single node at a time during the testing. Coul
 				fixed},
 				legend style={at={(0.72,0.25)},anchor=north},
 			xlabel=Clients (threads), ylabel=95\% transaction latency (ms), ymin=0]
+			\addlegendimage{/pgfplots/refstyle=plot_b_one}\addlegendentry{Throughput}
 			\addplot[dotted,blue,very thick] table [x={threads}, y={latency95}]{\pistonkinetics};
-			\label{plot_b_two}
 			\addlegendentry{Latency}
 		\end{axis}
 	\end{tikzpicture}
 	\caption{Sysbench RW, 3 nodes, varying number of threads, querying all nodes}
+	\label{fig:varying_threads_qmultiple}
 \end{figure}
 
 \section{Conclusion}
@@ -254,32 +255,34 @@ Summing up one may say that implementing a Galera Cluster with MariaDB offers va
 \section{MariaDB Configuration}
 \begin{verbatim}
 [mysqld]
-max_connections=2000
-query_cache_type=0
-query_cache_size=0
-log_bin=1
-binlog_format=ROW
-log_slave_updates=1
-innodb_flush_method=O_DIRECT
-innodb_buffer_pool_size=4000M
-innodb_buffer_pool_instances=4
-innodb_log_buffer_size=64M
-innodb_flush_log_at_trx_commit=2
-sync_binlog=0
-performance_schema=0
+max_connections = 2000
+query_cache_type = 0
+query_cache_size = 0
+performance_schema = 0
+log_bin = 1
+log_slave_updates = 1
+binlog_format = ROW
+innodb_flush_method = O_DIRECT
+innodb_buffer_pool_size = 4000M
+innodb_buffer_pool_instances = 4
+innodb_log_buffer_size = 64M
+
+# non-durable
+sync_binlog = 0
+innodb_flush_log_at_trx_commit = 2
 
 [galera]
-wsrep_on=ON
-wsrep_provider=libgalera_smm.so
-wsrep_cluster_name=galera
-wsrep_node_address=nodeX
-wsrep_node_name=nodeX
-wsrep_cluster_address=gcomm://node1,...
-wsrep_sst_method=rsync
-wsrep_slave_threads=8
-wsrep_provider_options=
+wsrep_on = ON
+wsrep_provider = libgalera_smm.so
+wsrep_cluster_name = galera
+wsrep_node_address = nodeX
+wsrep_node_name = nodeX
+wsrep_cluster_address = gcomm://node1,...
+wsrep_sst_method = rsync
+wsrep_slave_threads = 8
+wsrep_provider_options =
   "gcache.size=512M;gcs.fc_limit=512"
-innodb-autoinc-lock-mode=2
+innodb-autoinc-lock-mode = 2
 \end{verbatim}
 
 \section{Sysbench Preparation}
