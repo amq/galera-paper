@@ -1,0 +1,3 @@
+type	tps_nondurable	tps_durable
+{Galera}	18748	6061
+{Standalone}	22135	19261
