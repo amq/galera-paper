@@ -188,7 +188,7 @@ Secondly, we have observed the behavior of a 3-node cluster under a varying load
 
 \subsection{Latency}
 
-Considering that the throughput stops scaling past 32 concurrent clients in our setup, we have concluded that the latency must rise at least proportionally afterwards. But how consistent is it? Sysbench provides a 95th percentile to answer this question: Galera is free of unexpected latency deviations under an increasing load, as seen in Fig. \ref{fig:varying_threads_qsingle}. Additionally, we didn't observe any measurable oscillation when running the test for a longer period of time.
+Considering that the throughput stops scaling past 32 concurrent clients in our setup, we have concluded that the latency must rise at least proportionally afterwards. But how consistent is it? Sysbench provides a 95th percentile to answer this question: Galera is free of unexpected latency deviations under an increasing load, as seen in Fig. \ref{fig:varying_threads_qsingle}. Additionally, there has been no measurable latency oscillation when running the test for a longer period of time.
 
 \bigskip
 
@@ -245,7 +245,7 @@ In the next test we have validated the ability of a 3-node Galera cluster to rec
 The cluster remained healthy and accepted the removed nodes back without any manual intervention in all cases. As a result, we didn't uncover any failure-related problems in Galera. We have appreciated that the process of adding, removing and re-introducing nodes was completely transparent, not requiring any manual actions such as restoring dumps, pausing writes or promoting nodes.
 
 \section{Conclusion}
-Based on the testing results, Galera is a stable and in a mixed workload (Sysbench RW) creates just little overhead compared to a standalone MariaDB. It is primarily an HA system and one shouldn't expect scaling of anything apart of read operations, unless the application can work with out-of-order writes. Additionally, if writing to multiple nodes is required, the application must support transaction roll-back handling.
+Based on the testing results, Galera is stable and in a mixed workload (Sysbench RW) creates just little overhead compared to a standalone MariaDB. It is primarily an HA system and one shouldn't expect scaling of anything apart of read operations, unless the application can work with out-of-order writes. Additionally, if writing to multiple nodes is required, the application must support transaction roll-back handling.
 
 It is important to understand the limitations of our testing. Firstly, we have used a synthetic benchmark which doesn't represent a real-world application. Secondly, the testing conditions did not include some typical production properties like TLS encryption, multi-datacenter deployment (latency) and a load balancer - on purpose, otherwise we wouldn't be sure if performance issues are caused by them or by Galera. The future work could include more testing scenarios together with a comparison with some other multi-master replication implementation, such as MySQL Group Replication.
 
